@@ -45,10 +45,11 @@ public class Tile : MonoBehaviour
         shownCard = true;
     }
 
-    public void setOriginalCard() 
+    public void setOriginalCard( Sprite newCard) 
     {
         originalCard = newCard;
     }
+
 
 
 }
