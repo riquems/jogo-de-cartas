@@ -52,7 +52,7 @@ public class Card : MonoBehaviour
         return this;
     }
 
-    public Card Create(string cardOption, bool facingDown = false)
+    public Card Create(string cardOption, bool facingDown = true)
     {
         this.symbol = cardOption;
 
