@@ -11,14 +11,11 @@ public class NormalGameModeSceneManager : MonoBehaviour
     private List<Card> secondRowOfCards = null!;
     private int numberOfCardsPerRow = 13;
     private bool interactionBlocked = false;
-
     private Card? lastSelectedCard;
     private Stack<Card> selectedCards = new Stack<Card>();
-
     private bool timerIsRunning = false;
     private float timeRemaining = 0.0f;
     private Action? onTimerTimeout = null;
-
     private NumberText tries = null!;
     private NumberText matches = null!;
     private NumberText highscore = null!;
@@ -149,7 +146,7 @@ public class NormalGameModeSceneManager : MonoBehaviour
 
             if (this.CardEqualsCard(card, cardSelectedBefore))
             {
-                print("Você acertou!!!");
+                print("Vocï¿½ acertou!!!");
 
                 this.interactionBlocked = true;
                 onTimerTimeout = () =>
@@ -168,7 +165,7 @@ public class NormalGameModeSceneManager : MonoBehaviour
             }
             else
             {
-                print("Você errou!!!");
+                print("Vocï¿½ errou!!!");
 
                 this.interactionBlocked = true;
                 onTimerTimeout = () =>

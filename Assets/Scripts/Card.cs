@@ -17,11 +17,14 @@ public class Card : MonoBehaviour
     private Vector3 position;
     public bool facingDown;
     public bool selected;
+    public AudioSource audioSourceFlick;
+    public AudioSource audioSourceDisplay;
+    public AudioSource audioSourceRight;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -81,11 +84,10 @@ public class Card : MonoBehaviour
         this.front.GetComponent<SpriteRenderer>().sprite = cardFrontSprite;
         this.back.GetComponent<SpriteRenderer>().sprite = cardBackSprite;
 
-        if (facingDown)
+        if (facingDown) 
             this.Hide();
         else
             this.Reveal();
-
         return this;
     }
     /*
@@ -96,6 +98,7 @@ public class Card : MonoBehaviour
         this.facingDown = false;
         this.back.GetComponent<SpriteRenderer>().sortingOrder = -1;
         this.front.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        audioSourceFlick.Play();
     }
     /*
     esconde um card alterando o valor da variavel facingDown
@@ -105,6 +108,7 @@ public class Card : MonoBehaviour
         this.facingDown = true;
         this.back.GetComponent<SpriteRenderer>().sortingOrder = 0;
         this.front.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        audioSourceFlick.Play();
     }
     /*
     verifica se o collider associado ao card foi clicado. 
