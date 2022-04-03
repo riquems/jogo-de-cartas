@@ -250,7 +250,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Highscore:'
+  m_Text: "Melhor pontua\xE7\xE3o:"
 --- !u!222 &359923445
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -505,7 +505,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tries:'
+  m_Text: 'Tentativas:'
 --- !u!222 &546119509
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -677,7 +677,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Matches:'
+  m_Text: 'Pares formados:'
 --- !u!222 &1022087535
 CanvasRenderer:
   m_ObjectHideFlags: 0
