@@ -14,7 +14,7 @@ public class Card : MonoBehaviour
     public string symbol { get; set; } // Símbolo do card (ex: 2, 3, 4, queen, jack, ace)
     public string type { get; set; } // Tipo do card (ex: spades, hearts, diamonds, clubs)
     public string color { get; set; } // Cor do card (blue, red)
-    public int groupNumber { get; set; } // Grupo a qual o card pertence
+    public int groupNumber { get; set; } // Número do grupo a qual o card pertence
     public bool facingDown { get; set; } // Se o card está virado para baixo
     public bool selected { get; set; } // Se o card está selecionado
     public AudioSource audioSourceFlick; // Som que toca quando o card é virado (e desvirado)

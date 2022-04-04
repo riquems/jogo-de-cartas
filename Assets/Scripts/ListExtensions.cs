@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public static class Extensions
+/// <summary>
+/// Classe que contém os métodos de extensão relacionados a listas
+/// </summary>
+public static class ListExtensions
 {
     /*
      * Fisher Yates Shuffle
