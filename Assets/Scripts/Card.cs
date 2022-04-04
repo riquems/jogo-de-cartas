@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -76,7 +73,7 @@ public class Card : MonoBehaviour
         this.front.GetComponent<SpriteRenderer>().sprite = cardFrontSprite;
         this.back.GetComponent<SpriteRenderer>().sprite = cardBackSprite;
 
-        if (facingDown) 
+        if (facingDown)
             this.Hide();
         else
             this.Reveal();

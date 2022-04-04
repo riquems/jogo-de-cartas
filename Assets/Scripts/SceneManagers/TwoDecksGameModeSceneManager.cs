@@ -38,7 +38,7 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
 
         var dataToCreateCards = this.GenerateDataToCreateCards();
         dataToCreateCards.Shuffle();
-        
+
         dataToCreateCards = dataToCreateCards.Take(numberOfCardsPerGroup).ToList();
         this.CreateRowOfCards(0, 0.125f, dataToCreateCards, "red");
 

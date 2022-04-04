@@ -1,10 +1,11 @@
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-#nullable enable
 /// <summary>
 /// Script referente ao modo de jogo de somente letras
 /// </summary>
@@ -46,7 +47,7 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         }
 
         dataToCreateCards.Shuffle();
-        
+
         for (int i = 0; i < numberOfRows; i++)
         {
             this.CreateRowOfCards(1, i, dataToCreateCards, "blue");
