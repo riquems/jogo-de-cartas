@@ -1053,7 +1053,7 @@ GameObject:
   - component: {fileID: 1197316342}
   - component: {fileID: 1197316341}
   m_Layer: 0
-  m_Name: mainMenuBackground
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1390,7 +1390,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Imagem do menu principal
+  m_Text: 'Imagem de fundo
 
     https://besthqwallpapers.com/macro/poker-casino-playing-cards-casino-chips-poker-table-130007'
 --- !u!222 &1383744675

@@ -929,7 +929,7 @@ GameObject:
   - component: {fileID: 999551188}
   - component: {fileID: 999551187}
   m_Layer: 0
-  m_Name: mainMenuBackground
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
