@@ -52,7 +52,7 @@ public class NormalGameModeSceneManager : MonoBehaviour
             float cardWidth = this.cardPrefab.GetComponent<BoxCollider2D>().size.x;
             float gap = 0.1f;
 
-            float marginX = Screen.width * 0.075f;
+            float marginX = Screen.width * 0.05f;
             float marginY = Screen.height * 0.05f;
             float y = Screen.height / 2 + Screen.height * positionYFromCenterInPercentage;
             float z = Camera.main.transform.position.z * -1;

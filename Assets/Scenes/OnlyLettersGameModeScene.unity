@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 210.66, y: 0}
-  m_SizeDelta: {x: -423.55737, y: 0}
+  m_AnchoredPosition: {x: 199.47998, y: 0}
+  m_SizeDelta: {x: -401.2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16524339
 MonoBehaviour:
@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 259, y: 178.98}
+  m_AnchoredPosition: {x: 277, y: 174}
   m_SizeDelta: {x: 120.2295, y: 37.9816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &359923443
@@ -489,7 +489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -367.89, y: 192.6}
+  m_AnchoredPosition: {x: -339.89, y: 186}
   m_SizeDelta: {x: 120.2295, y: 37.9816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546119507
@@ -661,7 +661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -367.89, y: 154.61703}
+  m_AnchoredPosition: {x: -339.89, y: 148.02}
   m_SizeDelta: {x: 120.2295, y: 37.9816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022087533
@@ -752,8 +752,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -211.77869, y: 0}
-  m_SizeDelta: {x: -423.55737, y: 0}
+  m_AnchoredPosition: {x: -199.96002, y: 0}
+  m_SizeDelta: {x: -399.92, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1212916353
 MonoBehaviour:
@@ -920,7 +920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1068,7 +1068,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1984343483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4eeadb23b03d3e4ab43ca56ec62bd6b, type: 3}
+  m_Script: {fileID: 11500000, guid: a5f40e472c4fb8c47a4103db09878629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 1079955715877923494, guid: bc70a59fdcda96b4d913996e58ba76f1, type: 3}

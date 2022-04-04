@@ -12,5 +12,6 @@ public class TwoDecksGameModeSceneButton : MonoBehaviour
     public void OnClick()
     {
         SceneManager.LoadScene("TwoDecksGameModeScene");
+        GameManager.lastGameModeChosen = "TwoDecksGameMode";
     }
 }

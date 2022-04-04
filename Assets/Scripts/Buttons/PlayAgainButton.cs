@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class NormalGameModeSceneButton : MonoBehaviour
+public class PlayAgainButton : MonoBehaviour
 {
     private void Awake()
     {
@@ -11,7 +11,9 @@ public class NormalGameModeSceneButton : MonoBehaviour
 
     public void OnClick()
     {
-        SceneManager.LoadScene("NormalGameModeScene");
-        GameManager.lastGameModeChosen = "NormalGameMode";
+        if (GameManager.lastGameModeChosen != null)
+        {
+            SceneManager.LoadScene($"{GameManager.lastGameModeChosen}Scene");
+        }
     }
 }

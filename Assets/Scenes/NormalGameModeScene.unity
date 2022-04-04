@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -321,6 +322,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f4a532de7c70246b682a72f98b68f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -414,7 +427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -367.89, y: 194}
+  m_AnchoredPosition: {x: -339.89, y: 194}
   m_SizeDelta: {x: 120.2295, y: 37.9816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546119507
@@ -586,7 +599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -367.89, y: 156.02}
+  m_AnchoredPosition: {x: -339.89, y: 156.02}
   m_SizeDelta: {x: 120.2295, y: 37.9816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022087533
@@ -770,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -916,10 +929,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1984343483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738ae698290870745afe5b56956295b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4024dbe99cf9fca45b31617f6cdfa0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 1079955715877923494, guid: bc70a59fdcda96b4d913996e58ba76f1, type: 3}
+  cardPrefab: {fileID: 0}
 --- !u!4 &1984343485
 Transform:
   m_ObjectHideFlags: 0

@@ -12,5 +12,6 @@ public class OnlyLettersGameModeSceneButton : MonoBehaviour
     public void OnClick()
     {
         SceneManager.LoadScene("OnlyLettersGameModeScene");
+        GameManager.lastGameModeChosen = "OnlyLettersGameMode";
     }
 }

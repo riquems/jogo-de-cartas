@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class NormalGameModeSceneButton : MonoBehaviour
+public class MainMenuSceneButton : MonoBehaviour
 {
     private void Awake()
     {
@@ -11,7 +11,6 @@ public class NormalGameModeSceneButton : MonoBehaviour
 
     public void OnClick()
     {
-        SceneManager.LoadScene("NormalGameModeScene");
-        GameManager.lastGameModeChosen = "NormalGameMode";
+        SceneManager.LoadScene("MainMenuScene");
     }
 }

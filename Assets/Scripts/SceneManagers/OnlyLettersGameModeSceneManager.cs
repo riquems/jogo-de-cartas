@@ -65,7 +65,7 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
 
             float marginX = Screen.width * 0.200f;
             float marginY = Screen.height * 0.05f;
-            float y = (Screen.height / 2) + (Screen.height * 0.22f) - (rowNumber * 90);
+            float y = (Screen.height / 2) + (Screen.height * 0.22f) - (rowNumber * (Screen.height * 0.2f));
             float z = Camera.main.transform.position.z * -1;
 
             Vector3 screenPosition = new Vector3(marginX, y, z);

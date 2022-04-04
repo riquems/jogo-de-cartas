@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OnlyLettersGameModeScene.unity
     guid: 2e30c25854dd16740afd104f3ac3b72e
   - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: 1f65a264876defe43b783d13ea37f701
+  - enabled: 1
     path: Assets/Scenes/CreditsScene.unity
     guid: f75a217c81f448547b84869aad7ac7cf
   m_configObjects: {}
