@@ -200,6 +200,8 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
                 PlayerPrefs.SetInt("highscore_" + SceneManager.GetActiveScene().name, this.tries.GetValue());
                 this.highscore.SetValue(this.tries.GetValue());
             }
+
+            SceneManager.LoadScene("VictoryScene");
         }
     }
 

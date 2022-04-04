@@ -34,7 +34,7 @@ public class MainMenuSceneManager : MonoBehaviour
 
     public void OnCreditsButtonClick()
     {
-        SceneManager.LoadScene("CreditsGameModeScene");
+        SceneManager.LoadScene("CreditsScene");
     }
 
     public void OnQuitButtonClick()
