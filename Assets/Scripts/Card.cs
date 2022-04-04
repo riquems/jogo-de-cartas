@@ -17,7 +17,7 @@ public class Card : MonoBehaviour
     public int groupNumber { get; set; } // Grupo a qual o card pertence
     public bool facingDown { get; set; } // Se o card está virado para baixo
     public bool selected { get; set; } // Se o card está selecionado
-    public AudioSource audioSourceFlick { get; set; } // Som que toca quando o card é virado (e desvirado)
+    public AudioSource audioSourceFlick; // Som que toca quando o card é virado (e desvirado)
 
     /*
      * WithType da valor uma variavel pública (type) de acordo com uma entrada especifica de um tipo adequado
