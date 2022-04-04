@@ -2,18 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 /// <summary>
-///  Essa classe traz funções associadas e variavés associadas ao prefab do card.  
+///    Essa classe traz funções associadas e variavés associadas ao prefab do card.
 /// </summary>
 public class Card : MonoBehaviour
 {
     public GameObject front;
     public GameObject back;
 
-    public string symbol; 
+    public string symbol;
     public string type;
     public string color;
-    public int rowNumber;
+    public int groupNumber;
     private Vector3 position;
     public bool facingDown;
     public bool selected;
@@ -33,7 +34,7 @@ public class Card : MonoBehaviour
         
     }
     /*
-    WithType da valor uma variavel pública (type) de acordo com uma entrada especifica de um tipo adequado
+        WithType da valor uma variavel pública (type) de acordo com uma entrada especifica de um tipo adequado
     */
     public Card WithType(string type)
     {
@@ -41,7 +42,7 @@ public class Card : MonoBehaviour
         return this;
     }
     /* 
-    WithColor dá valor uma variavel pública (color) de acordo com uma entrada especifica de um tipo adequado
+        WithColor dá valor uma variavel pública (color) de acordo com uma entrada especifica de um tipo adequado
     */
     public Card WithColor(string color)
     {
@@ -49,11 +50,11 @@ public class Card : MonoBehaviour
         return this;
     }
     /* 
-    InRow dá valor uma variavel pública (rowNumber) de acordo com uma entrada especifica do tipo adequado
+        InGroup dá valor uma variavel pública (groupNumber) de acordo com uma entrada especifica do tipo adequado
     */
-    public Card InRow(int rowNumber)
+    public Card InGroup(int groupNumber)
     {
-        this.rowNumber = rowNumber;
+        this.groupNumber = groupNumber;
         return this;
     }
     /*
@@ -73,7 +74,7 @@ public class Card : MonoBehaviour
     {
         this.symbol = cardOption;
 
-        this.name = $"{this.rowNumber} - {this.symbol} of {this.type} ({this.color})";
+        this.name = $"{this.groupNumber} - {this.symbol} of {this.type} ({this.color})";
 
         this.front = GameObject.Find($"{this.name}/Front");
         this.back = GameObject.Find($"{this.name}/Back");

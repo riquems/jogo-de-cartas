@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 #nullable enable
 public class TwoDecksGameModeSceneManager : MonoBehaviour
 {
     public GameObject cardPrefab = null!;
-    private List<Card> firstRowOfCards = null!;
-    private List<Card> secondRowOfCards = null!;
-    private int numberOfCardsPerRow = 13;
+    private const int numberOfCardsPerGroup = 13;
+    private const int numberOfGroups = 2;
+    private const int maxNumberOfMatches = (numberOfCardsPerGroup * numberOfGroups) / 2;
     private bool interactionBlocked = false;
 
     private Card? lastSelectedCard;
@@ -31,25 +32,25 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
         var dataToCreateCards = this.GenerateDataToCreateCards();
         dataToCreateCards.Shuffle();
         
-        dataToCreateCards = dataToCreateCards.Take(numberOfCardsPerRow).ToList();
-        this.firstRowOfCards = this.CreateRowOfCards(1, 0.125f, dataToCreateCards, "red");
+        dataToCreateCards = dataToCreateCards.Take(numberOfCardsPerGroup).ToList();
+        this.CreateRowOfCards(0, 0.125f, dataToCreateCards, "red");
 
         dataToCreateCards.Shuffle();
-        this.secondRowOfCards = this.CreateRowOfCards(2, -0.125f, dataToCreateCards, "blue");
+        this.CreateRowOfCards(1, -0.125f, dataToCreateCards, "blue");
     }
 
     void Init()
     {
         this.tries = GameObject.Find("Tries").GetComponent<NumberText>().Create(0);
         this.matches = GameObject.Find("Matches").GetComponent<NumberText>().Create(0);
-        this.highscore = GameObject.Find("Highscore").GetComponent<NumberText>().Create(PlayerPrefs.GetInt("highscore"));
+        this.highscore = GameObject.Find("Highscore").GetComponent<NumberText>().Create(PlayerPrefs.GetInt("highscore_" + SceneManager.GetActiveScene().name));
     }
 
     List<Card> CreateRowOfCards(int rowNumber, float positionYFromCenterInPercentage, List<CreateCardData> createCardsData, string color)
     {
         var rowOfCards = new List<Card>();
 
-        for (int i = 0; i < numberOfCardsPerRow; i++)
+        for (int i = 0; i < numberOfCardsPerGroup; i++)
         {
             float cardWidth = this.cardPrefab.GetComponent<BoxCollider2D>().size.x;
             float gap = 0.1f;
@@ -66,7 +67,7 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
             CreateCardData cardData = createCardsData[i];
             cardData.position = position;
             cardData.color = color;
-            cardData.rowNumber = rowNumber;
+            cardData.groupNumber = rowNumber;
 
             Card card = this.CreateCard(cardData);
 
@@ -108,7 +109,7 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
         Card card = Instantiate(this.cardPrefab).GetComponent<Card>()
                 .WithType(data.type)
                 .WithColor(data.color)
-                .InRow(data.rowNumber)
+                .InGroup(data.groupNumber)
                 .InPosition(data.position)
                 .Create(data.card);
 
@@ -123,7 +124,7 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
         if (card.selected)
             return;
 
-        if (this.lastSelectedCard != null && card.rowNumber == this.lastSelectedCard.rowNumber)
+        if (this.lastSelectedCard != null && card.groupNumber == this.lastSelectedCard.groupNumber)
             return;
 
         print($"Card {card.name} was clicked");
@@ -190,13 +191,13 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
 
     private void CheckWin()
     {
-        if (this.matches == this.numberOfCardsPerRow)
+        if (this.matches == maxNumberOfMatches)
         {
             print("You won!");
 
             if (this.highscore == 0 || this.tries < this.highscore)
             {
-                PlayerPrefs.SetInt("highscore", this.tries.GetValue());
+                PlayerPrefs.SetInt("highscore_" + SceneManager.GetActiveScene().name, this.tries.GetValue());
                 this.highscore.SetValue(this.tries.GetValue());
             }
         }
