@@ -5,27 +5,33 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 #nullable enable
+/// <summary>
+/// Script referente ao modo de jogo de somente letras
+/// </summary>
 public class OnlyLettersGameModeSceneManager : MonoBehaviour
 {
-    public GameObject cardPrefab = null!;
-    private const int numberOfCardsPerRow = 4;
-    private const int numberOfRows = 4;
-    private const int numberOfGroups = 2;
-    private const int numberOfPossibleMatches = ((numberOfCardsPerRow * numberOfRows) * numberOfGroups) / 2;
-    private bool interactionBlocked = false;
+    public GameObject cardPrefab = null!; // Prefab da carta
 
-    private Card? lastSelectedCard;
-    private Stack<Card> selectedCards = new Stack<Card>();
+    private const int numberOfCardsPerRow = 4; // Número de cartas por linha
+    private const int numberOfRows = 4; // Número de cartas por linha
+    private const int numberOfGroups = 2; // Número de grupos
+    private const int numberOfPossibleMatches = ((numberOfCardsPerRow * numberOfRows) * numberOfGroups) / 2; // Número de pares possíveis
+    private bool interactionBlocked = false; // Se a interação do jogador está bloqueada
 
-    private bool timerIsRunning = false;
-    private float timeRemaining = 0.0f;
-    private Action? onTimerTimeout = null;
+    private Card? lastSelectedCard; // Variável que guarda o último card selecionado
+    private Stack<Card> selectedCards = new Stack<Card>(); // Pilha de cards selecionados
 
-    private NumberText tries = null!;
-    private NumberText matches = null!;
-    private NumberText highscore = null!;
+    private bool timerIsRunning = false; // Se o timer está rodando
+    private float timeRemaining = 0.0f; // Tempo faltante do timer
+    private Action? onTimerTimeout = null; // Função para executar quando o timer termina
 
-    // Start is called before the first frame update
+    private NumberText tries = null!; // Informação na tela que diz o número de tentativas
+    private NumberText matches = null!; // Informação na tela que diz o número de matches
+    private NumberText highscore = null!; // Informação na tela que diz o record da última vez que esse modo de jogo foi jogado
+
+    /*
+     * Método que é chamado antes do primeiro frame ser renderizado
+     */
     void Start()
     {
         this.Init();
@@ -47,6 +53,9 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         }
     }
 
+    /*
+     * Método chamado no Start para atribuir referências necessárias por esse script
+     */
     void Init()
     {
         this.tries = GameObject.Find("Tries").GetComponent<NumberText>().Create(0);
@@ -54,6 +63,9 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         this.highscore = GameObject.Find("Highscore").GetComponent<NumberText>().Create(PlayerPrefs.GetInt("highscore_" + SceneManager.GetActiveScene().name));
     }
 
+    /*
+     * Método para criar uma linha de cartas
+     */
     List<Card> CreateRowOfCards(int groupNumber, int rowNumber, List<CreateCardData> createCardsData, string color)
     {
         var rowOfCards = new List<Card>();
@@ -85,6 +97,9 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         return rowOfCards;
     }
 
+    /*
+     * Método para criar dados para a criação de cartas
+     */
     List<CreateCardData> GenerateDataToCreateCards()
     {
         string[] numberCards = Enumerable.Range(2, 9).Select(number => number.ToString()).ToArray();
@@ -112,6 +127,9 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         return createCardsData;
     }
 
+    /*
+     * Método que cria uma carta
+     */
     Card CreateCard(CreateCardData data)
     {
         Card card = Instantiate(this.cardPrefab).GetComponent<Card>()
@@ -124,6 +142,9 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         return card;
     }
 
+    /*
+     * Método acionado quando uma carta é clicada
+     */
     public void OnCardClick(Card card)
     {
         if (this.interactionBlocked)
@@ -140,6 +161,9 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         this.SelectCard(card);
     }
 
+    /*
+     * Método dessa classe que cuida da seleção de uma carta
+     */
     private void SelectCard(Card card)
     {
         card.Reveal();
@@ -197,6 +221,18 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         }
     }
 
+    /*
+     * Método que desseleciona uma carta
+     */
+    private void DeselectCard(Card card)
+    {
+        card.selected = false;
+        card.Hide();
+    }
+
+    /*
+     * Método que verifica se o jogador completou o jogo
+     */
     private void CheckWin()
     {
         if (this.matches == numberOfPossibleMatches)
@@ -213,6 +249,9 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         }
     }
 
+    /*
+     * Método que coloca um timer para rodar por um determinado determinado
+     */
     private void SetTimeout(float countdown, Action action)
     {
         this.onTimerTimeout = action;
@@ -220,19 +259,18 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         this.timerIsRunning = true;
     }
 
-    private void DeselectCard(Card card)
-    {
-        card.selected = false;
-        card.Hide();
-    }
-
+    /*
+     * Método que verifica se uma carta é igual a outra
+     */
     private bool CardEqualsCard(Card card1, Card card2)
     {
         return card1.symbol.Equals(card2.symbol) &&
                card1.type.Equals(card2.type);
     }
 
-    // Update is called once per frame
+    /*
+     * Método que é chamado uma vez por frame
+     */
     void Update()
     {
         if (this.timerIsRunning)
@@ -248,6 +286,9 @@ public class OnlyLettersGameModeSceneManager : MonoBehaviour
         }
     }
 
+    /*
+     * CancelTimer é um método que finaliza o timer
+     */
     void CancelTimer()
     {
         this.timeRemaining = 0;

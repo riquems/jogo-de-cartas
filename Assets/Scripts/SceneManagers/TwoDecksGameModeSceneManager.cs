@@ -1,30 +1,37 @@
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-#nullable enable
+/// <summary>
+/// Script referente ao modo de jogo de dois baralhos
+/// </summary>
 public class TwoDecksGameModeSceneManager : MonoBehaviour
 {
-    public GameObject cardPrefab = null!;
-    private const int numberOfCardsPerGroup = 13;
-    private const int numberOfGroups = 2;
-    private const int maxNumberOfMatches = (numberOfCardsPerGroup * numberOfGroups) / 2;
-    private bool interactionBlocked = false;
+    public GameObject cardPrefab = null!; // Prefab da carta
 
-    private Card? lastSelectedCard;
-    private Stack<Card> selectedCards = new Stack<Card>();
+    private const int numberOfCardsPerGroup = 13; // Número de cartas por grupo
+    private const int numberOfGroups = 2; // Número de grupos
+    private const int maxNumberOfMatches = (numberOfCardsPerGroup * numberOfGroups) / 2; // Número de pares possíveis
+    private bool interactionBlocked = false; // Se a interação do jogador está bloqueada
 
-    private bool timerIsRunning = false;
-    private float timeRemaining = 0.0f;
-    private Action? onTimerTimeout = null;
+    private Card? lastSelectedCard; // Variável que guarda o último card selecionado
+    private Stack<Card> selectedCards = new Stack<Card>(); // Pilha de cards selecionados
 
-    private NumberText tries = null!;
-    private NumberText matches = null!;
-    private NumberText highscore = null!;
+    private bool timerIsRunning = false; // Se o timer está rodando
+    private float timeRemaining = 0.0f; // Tempo faltante do timer
+    private Action? onTimerTimeout = null; // Função para executar quando o timer termina
 
-    // Start is called before the first frame update
+    private NumberText tries = null!; // Informação na tela que diz o número de tentativas
+    private NumberText matches = null!; // Informação na tela que diz o número de matches
+    private NumberText highscore = null!; // Informação na tela que diz o record da última vez que esse modo de jogo foi jogado
+
+    /*
+     * Método que é chamado antes do primeiro frame ser renderizado
+     */
     void Start()
     {
         this.Init();
@@ -39,6 +46,9 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
         this.CreateRowOfCards(1, -0.125f, dataToCreateCards, "blue");
     }
 
+    /*
+     * Método chamado no Start para atribuir referências necessárias por esse script
+     */
     void Init()
     {
         this.tries = GameObject.Find("Tries").GetComponent<NumberText>().Create(0);
@@ -46,6 +56,9 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
         this.highscore = GameObject.Find("Highscore").GetComponent<NumberText>().Create(PlayerPrefs.GetInt("highscore_" + SceneManager.GetActiveScene().name));
     }
 
+    /*
+     * Método para criar uma linha de cartas
+     */
     List<Card> CreateRowOfCards(int rowNumber, float positionYFromCenterInPercentage, List<CreateCardData> createCardsData, string color)
     {
         var rowOfCards = new List<Card>();
@@ -77,6 +90,9 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
         return rowOfCards;
     }
 
+    /*
+     * Método para criar dados para a criação de cartas
+     */
     List<CreateCardData> GenerateDataToCreateCards()
     {
         string[] numberCards = Enumerable.Range(2, 9).Select(number => number.ToString()).ToArray();
@@ -104,6 +120,9 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
         return createCardsData;
     }
 
+    /*
+     * Método que cria uma carta
+     */
     Card CreateCard(CreateCardData data)
     {
         Card card = Instantiate(this.cardPrefab).GetComponent<Card>()
@@ -116,6 +135,9 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
         return card;
     }
 
+    /*
+     * Método acionado quando uma carta é clicada
+     */
     public void OnCardClick(Card card)
     {
         if (this.interactionBlocked)
@@ -132,6 +154,9 @@ public class TwoDecksGameModeSceneManager : MonoBehaviour
         this.SelectCard(card);
     }
 
+    /*
+     * Método dessa classe que cuida da seleção de uma carta
+     */
     private void SelectCard(Card card)
     {
         card.Reveal();
