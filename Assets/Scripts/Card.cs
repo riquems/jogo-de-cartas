@@ -4,72 +4,63 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-///    Essa classe traz funções associadas e variavés associadas ao prefab do card.
+/// Essa classe traz funções associadas e variavés associadas ao prefab do card.
 /// </summary>
 public class Card : MonoBehaviour
 {
-    public GameObject front;
-    public GameObject back;
+    public GameObject front { get; set; } // Parte da frente do card
+    public GameObject back { get; set; } // Parte de trás do card
 
-    public string symbol;
-    public string type;
-    public string color;
-    public int groupNumber;
-    private Vector3 position;
-    public bool facingDown;
-    public bool selected;
-    public AudioSource audioSourceFlick;
-    public AudioSource audioSourceDisplay;
-    public AudioSource audioSourceRight;
+    public string symbol { get; set; } // Símbolo do card (ex: 2, 3, 4, queen, jack, ace)
+    public string type { get; set; } // Tipo do card (ex: spades, hearts, diamonds, clubs)
+    public string color { get; set; } // Cor do card (blue, red)
+    public int groupNumber { get; set; } // Grupo a qual o card pertence
+    public bool facingDown { get; set; } // Se o card está virado para baixo
+    public bool selected { get; set; } // Se o card está selecionado
+    public AudioSource audioSourceFlick { get; set; } // Som que toca quando o card é virado (e desvirado)
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     /*
-        WithType da valor uma variavel pública (type) de acordo com uma entrada especifica de um tipo adequado
-    */
+     * WithType da valor uma variavel pública (type) de acordo com uma entrada especifica de um tipo adequado
+     */
+
     public Card WithType(string type)
     {
         this.type = type;
         return this;
     }
-    /* 
-        WithColor dá valor uma variavel pública (color) de acordo com uma entrada especifica de um tipo adequado
-    */
+
+    /*
+     * WithColor dá valor uma variavel pública (color) de acordo com uma entrada especifica de um tipo adequado
+     */
     public Card WithColor(string color)
     {
         this.color = color;
         return this;
     }
-    /* 
-        InGroup dá valor uma variavel pública (groupNumber) de acordo com uma entrada especifica do tipo adequado
-    */
+
+    /*
+     * InGroup dá valor uma variavel pública (groupNumber) de acordo com uma entrada especifica do tipo adequado
+     */
     public Card InGroup(int groupNumber)
     {
         this.groupNumber = groupNumber;
         return this;
     }
+
     /*
-       InPosition dá valor uma variavel pública (position) de acordo com uma entrada especifica do tipo adequado
-    */
+     * InPosition dá valor uma variavel pública (position) de acordo com uma entrada especifica do tipo adequado
+     */
     public Card InPosition(Vector3 position)
     {
         this.transform.position = position;
         return this;
     }
+
     /*
-    Create : cria um card de acordo com a Opção (cardOption), que representa o simbolo do card (Spades, hearts,
-    Clubs, Diamonds), e de o nome do Card é de acordo com o rowNumber, symbol, type e color.
-    Caso o card esteja virado para baixo( facingDown=true), ele ira virar (facingDown=false), e vice-versa
-    */
+     * Create : cria um card de acordo com o card option (2, 3, queen, jack, king, ace)
+     * e dá o nome do Card de acordo com o rowNumber, symbol, type e color.
+     * Caso o card esteja virado para baixo(facingDown=true), ele ira virar (facingDown=false), e vice-versa
+     */
     public Card Create(string cardOption, bool facingDown = true)
     {
         this.symbol = cardOption;
@@ -91,9 +82,10 @@ public class Card : MonoBehaviour
             this.Reveal();
         return this;
     }
+
     /*
-    revela um card alterando o valor da variavel facingDown
-    */
+     * Revela um card alterando o valor da variavel facingDown
+     */
     public void Reveal()
     {
         this.facingDown = false;
@@ -101,9 +93,10 @@ public class Card : MonoBehaviour
         this.front.GetComponent<SpriteRenderer>().sortingOrder = 0;
         audioSourceFlick.Play();
     }
+
     /*
-    esconde um card alterando o valor da variavel facingDown
-    */
+     * Esconde um card alterando o valor da variavel facingDown
+     */
     public void Hide()
     {
         this.facingDown = true;
@@ -111,9 +104,10 @@ public class Card : MonoBehaviour
         this.front.GetComponent<SpriteRenderer>().sortingOrder = -1;
         audioSourceFlick.Play();
     }
+
     /*
-    verifica se o collider associado ao card foi clicado. 
-    */
+     * Método acionado quando há um clique no card
+     */
     private void OnMouseDown()
     {
         GameObject.FindGameObjectWithTag("Manager").SendMessage("OnCardClick", this);
